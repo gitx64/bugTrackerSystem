@@ -1,6 +1,7 @@
 import express from 'express';
 import User from '../models/user.model.js'
 import bcrypt from 'bcryptjs';
+import mongoose from 'mongoose';
 const router = express.Router();
 
 // POST Login User /api/users/login
@@ -40,7 +41,7 @@ router.post('/register', async(req,res) => {
     name,
     email,
     password: hashedPassword,
-    role
+    role : 'user'
   });
   
   await newUser.save();
